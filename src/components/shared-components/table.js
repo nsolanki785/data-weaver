@@ -30,8 +30,6 @@ const ProductTable = ({ tableData, setallproducts, setShowModal, setrowid }) => 
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [productId, setProductId] = useState("");
-  const [ProductName, setProductName] = useState("");
   const [filtedata, setFilterData] = useState([tableData]);
 
   //  setFilterData(tableData)
@@ -43,25 +41,7 @@ const ProductTable = ({ tableData, setallproducts, setShowModal, setrowid }) => 
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  const handleSearch = async () => {
-    if (productId && !ProductName) {
-      const response = await axios.get(`https://dummyjson.com/products/${productId}`)
-      setallproducts([response.data])
-    }
-    else if (ProductName && !productId) {
-      const response = await axios.get(`https://dummyjson.com/products/search?q=${ProductName}`)
-      setallproducts(response.data.products)
-    }
-    else {
-      console.log('Hello');
-      setallproducts([])
-    }
-  }
-
-  const handleModal = (Id) => {
-    setShowModal(true)
-    setrowid(Id)
-  }
+  
 
 
 
@@ -91,20 +71,6 @@ const ProductTable = ({ tableData, setallproducts, setShowModal, setrowid }) => 
               <TableCell align="left" colSpan={1}>
                 Product Name
               </TableCell>
-              <TableCell align="left" colSpan={1}>
-                Actions
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align="left" colSpan={1}>
-                <TextField id="outlined-basic" label="Product Id" variant="outlined" onChange={(e) => setProductId(e.target.value)} />
-              </TableCell>
-              <TableCell align="left" colSpan={1}>
-                <TextField id="outlined-basic" label="Product Name" variant="outlined" onChange={(e) => setProductName(e.target.value)} />
-              </TableCell>
-              <TableCell align="left" colSpan={1}>
-                <Button variant="contained" onClick={handleSearch}>Search</Button>
-              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -125,7 +91,6 @@ const ProductTable = ({ tableData, setallproducts, setShowModal, setrowid }) => 
                           <>
                             <TableCell key={column.id} align={column.align}>
                               {value}
-                              {!value && <Button id={row.id} onClick={() => handleModal(row.id)}>Edit</Button>}
                             </TableCell>
                           </>
                         );

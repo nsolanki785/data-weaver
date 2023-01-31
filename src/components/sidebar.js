@@ -19,6 +19,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Stack from '@mui/material/Stack';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router';
 
 
 const drawerWidth = 500;
@@ -56,6 +57,8 @@ const Sidebar = () => {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+
+  const navigate = useNavigate();
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -107,7 +110,7 @@ const Sidebar = () => {
         <Divider />
         <List>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={()=>navigate('/')}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
@@ -118,9 +121,9 @@ const Sidebar = () => {
         </List>
         <Divider />
         <List>
-          {['All Products', 'Products Details', 'Mobile Accessories', 'Laptops', 'Beauty Products'].map((text, index) => (
+          {['EndYear', 'Topics', 'Sector', 'Region', 'PEST','Source','SWOT'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={()=>navigate(`/product/${text}`)}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
