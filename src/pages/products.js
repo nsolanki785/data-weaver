@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import ProductTable from '../components/shared-components/table';
 import axios from 'axios';
 import Modal from '../components/shared-components/modal/modal';
-import Editform from '../components/views/Editform';
 import Sidebar from '../components/sidebar';
 import { Stack } from '@mui/system';
 import Paper from '@mui/material/Paper';

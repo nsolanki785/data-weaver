@@ -52,7 +52,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const Sidebar = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -103,9 +103,7 @@ const Sidebar = () => {
           </Stack>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-
           </IconButton>
-
         </DrawerHeader>
         <Divider />
         <List>
